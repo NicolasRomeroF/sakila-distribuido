@@ -17,7 +17,7 @@ public class Film {
             unique=true,
             nullable=false
     )
-    private int film_id;
+    private int idFilm;
 
     @Column(name="title")
     private String title;
