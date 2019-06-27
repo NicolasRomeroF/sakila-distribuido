@@ -36,8 +36,8 @@ import java.net.InetAddress;
 
 @Repository
 public class MovieIndex {
-	private final String INDEX = "femdat";
-	private final String TYPE = "tweet";
+	private final String INDEX = "movies";
+	private final String TYPE = "movie";
 	private RestHighLevelClient restHighLevelClient;
 	private ObjectMapper objectMapper;
 	@Autowired

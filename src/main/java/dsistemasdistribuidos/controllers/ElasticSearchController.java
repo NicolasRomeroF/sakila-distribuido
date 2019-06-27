@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@ComponentScan(basePackages="tbd.grupo1.femdat")
+@ComponentScan(basePackages="dsistemasdistribuidos")
 @RestController
 @EnableAutoConfiguration
 @RequestMapping("/elasticsearch")
@@ -26,7 +26,7 @@ public class ElasticSearchController {
     }*/
 
 	@GetMapping("/{id}")
-	public Map<String, Object> getTweetById(@PathVariable String id){
-	  return null;
+	public boolean getTweetById(@PathVariable String id){
+	  return true;
 	}
 }
