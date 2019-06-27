@@ -29,26 +29,4 @@ public class Film {
     )
     private String description;
 
-    @Column(name="release_year")
-    private int release_year;
-
-
-    @Column(name="language_id")
-    private int language_id;
-
-    @Column(name="original_language_id")
-    private int original_language_id;
-
-    @Column(name="rental_duration")
-    private int rental_duration;
-
-    @Column(name="rental_rate")
-    private int rental_rate;
-
-    @Column(name="length")
-    private int length;
-
-    @Column(name="lengthreplacement_cost")
-    private int lengthreplacement_cost;
-
 }
