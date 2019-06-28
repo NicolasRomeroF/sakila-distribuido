@@ -5,7 +5,7 @@ var elasticClient = new elasticsearch.Client({
     log: 'info'
 });
 
-var indexName = "randomindex";
+var indexName = "movies";
 
 /**
 * Delete an existing index
@@ -57,17 +57,16 @@ function initMapping() {
 }
 exports.initMapping = initMapping;
 
-function addDocument(document) {  
+function addDocument(title,content) {  
     return elasticClient.index({
         index: indexName,
         type: "document",
         body: {
-            title: document.title,
-            content: document.content,
+            title: title,
+            content: content,
             suggest: {
-                input: document.title.split(" "),
-                output: document.title,
-                payload: document.metadata || {}
+                input: title.split(" "),
+                output: title,
             }
         }
     });
