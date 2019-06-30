@@ -30,4 +30,4 @@ build/
 ### VS Code ###
 .vscode/
 
-distribuidosLab3/node_modules/
+/node_modules/
