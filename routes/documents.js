@@ -13,7 +13,7 @@ router.post('/', function (req, res, next) {
   elastic.addDocument(req.body).then(function (result) { res.json(result) });
 });
 
-router.get('/testing/:input',function (req,res,next){
+router.get('/:input',function (req,res,next){
     elastic.getMovie(req.params.input).then(function (result) {res.json(result)});
 })
 
