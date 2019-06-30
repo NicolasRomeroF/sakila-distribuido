@@ -65,7 +65,7 @@ function addDocument(title,content) {
             title: title,
             content: content,
             suggest: {
-                input: title.split(" "),
+                input: title,
                 output: title,
             }
         }

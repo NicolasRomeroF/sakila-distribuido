@@ -17,4 +17,8 @@ router.get('/testing/:input',function (req,res,next){
     elastic.getMovie(req.params.input).then(function (result) {res.json(result)});
 })
 
+router.get('/initIndex',function(req,res,next){
+  elastic.initIndex().then(function (result) {res.json(result)})
+})
+
 module.exports = router;
