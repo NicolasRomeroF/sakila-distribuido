@@ -1,0 +1,31 @@
+var http = require('http'),
+httpProxy = require('http-proxy');
+var servers =  ['http://127.0.0.1:3001', 'http://127.0.0.1:3002', 'http://127.0.0.1:3003'];
+
+var proxy = httpProxy.createProxyServer();
+http.createServer(function(req,res){
+    loadBalanceProxy(req,res);
+}).listen(8000);
+
+var currentServer = 1;
+function loadBalanceProxy(req, res){
+    var cur = currentServer%servers.length;
+    currentServer++;
+    var target = servers[cur];
+    proxy.web(req, res, {
+        target: target
+    });
+    proxy.on('proxyRes',function (proxyRes, req, res) {
+    console.log('RAW Response from the target', JSON.stringify(proxyRes.headers, true, 2))});
+}
+//node det-server.js 8000
+
+
+/*
+node det-server.js 8001 &
+node det-server.js 8002 &
+node det-server.js 8003 &
+node load-balancer.js 8000
+*/
+
+//ab -c5 -t10-k http://localhost:8000/

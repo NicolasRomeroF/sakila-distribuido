@@ -5,12 +5,20 @@ var mongo = require('../models/MongoDBModel');
 
 router.get('/connect', function(req, res, next){
     mongo.connectDB();
-    return "Ok";
+    res.send("Connected!");
 })
 
 router.post('/addMovie', function(req,res,next){
-    console.log("################################")
-    mongo.addMovie(req.body);
+    console.log("agregando pelicula");
+    mongo.addMovie(req.body,res);
+})
+
+router.get('/all', function(req,res,next){
+    mongo.getMovies(res);
+})
+
+router.get('/:input', function (req,res,next){
+    mongo.getMovie(req.params.input,res);
 })
 
 module.exports = router;

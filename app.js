@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 var documentsRouter = require('./routes/documents')
 var mongoRouter = require('./routes/mongo');
 
+var Movie = require('./models/MovieModel')
+
 var app = express();
 
 // view engine setup
@@ -24,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/documents',documentsRouter);
-app.use('/mongo',mongoRouter);
+app.use('/movie',mongoRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
