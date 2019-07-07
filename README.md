@@ -56,7 +56,7 @@ A continuacion se muestra una captura de la pagina de stats del HAProxy mientras
 
 ## Referencias
 
-Para el HAProxy: https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts
-Para el balanceador de carga usando Node.js: https://mazira.com/blog/introduction-load-balancing-nodejs
-Apache HTTP server benchmarking tool : https://httpd.apache.org/docs/2.4/programs/ab.html
-Express.js framwork: https://expressjs.com/es/
+- Para el HAProxy: https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts
+- Para el balanceador de carga usando Node.js: https://mazira.com/blog/introduction-load-balancing-nodejs
+- Apache HTTP server benchmarking tool : https://httpd.apache.org/docs/2.4/programs/ab.html
+- Express.js framwork: https://expressjs.com/es/
