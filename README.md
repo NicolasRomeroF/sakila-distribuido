@@ -54,10 +54,10 @@ La arquitectura del sistema provee disponibilidad durante todo momento, ya que s
 Al momento de que el usuario realiza una consulta, ésta es enviada a un proxy, el cual selecciona un servidor para llevar a cabo la consulta de manera distribuida. Para la elección del servidor a mandar la consulta, se tiene una lista con cada uno de ellos, y el proxy elige según un criterio de uso para repartir equitativamente la cantidad de consultas que son enviadas.
 
 ## Paralelización de la consulta
-
+Dado un gran numero de consultas, los proxy's se encargan de enviar éstas a los servidores. Cada uno de los servidores tendrá consultas diferentes, por lo que pueden haber tantas consultas simultaneamente como servidores hayan. Esto logra tener un ratio mucho mayor de consultas resueltas en el largo plazo a comparación con replicar la misma a varios servidores y esperar la primera respuesta que llegue (la cual es más rapida pero solo si se esta considerando una consulta, y no varias que se esten generando en el momento).
 
 ## Análisis de la distribución de la base de datos
-Cada uno de los servidores tiene a cargo una base de datos, la cual exactamente la misma para todos ellos. La base de datos esta replicada tantas veces como servidores hayan, por lo tanto cada uno de ellos esta en condiciones de realizar la misma consulta. 
+Cada uno de los servidores tiene a cargo una base de datos, la cual exactamente la misma para todos ellos. La base de datos esta replicada tantas veces como servidores hayan, por lo tanto cada uno de ellos esta en condiciones de realizar la misma consulta y obtendría la misma respuesta. 
 
 
 ## Referencias
