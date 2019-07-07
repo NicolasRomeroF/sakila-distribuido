@@ -1,9 +1,8 @@
 var mongoose = require("mongoose");
-var elasticsearch = require('./ElasticSearchModel')
 var Movie = require('./MovieModel')
 
 function connectDB(){
-    mongoose.connect("mongodb://localhost:27017/test");
+    mongoose.connect("mongodb://localhost:27017/sakila",{ useNewUrlParser: true })
     mongoose.connection.on("error", error => {    console.log("Database connection error:", error);});
     mongoose.connection.once("open", () => {
         console.log("Connected to Database!");
@@ -11,10 +10,6 @@ function connectDB(){
 }
 
 exports.connectDB = connectDB;
-
-function indexMovie(title,content){
-    elasticsearch.addDocument(title,content);
-}
 
 function addMovie(data,res){
     console.log('guardando pelicula')
@@ -49,11 +44,12 @@ function getMovies(res){
 exports.getMovies = getMovies;
 
 function getMovie(input,res){
-    Movie.find({$or:[
-        {'title':input},
-        {'content':input}
-    ]})
+    
+    console.log("getMovie",input)
+    Movie.find({$text: {$search: input}})
+    .limit(20)
     .exec(function(err,movies){
+        console.log("exec")
         if(err){
             res.send('error al obtener pelicula')
         }else{

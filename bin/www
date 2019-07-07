@@ -4,6 +4,8 @@
  * Module dependencies.
  */
 
+
+var args = process.argv.splice(2);
 var app = require('../app');
 var debug = require('debug')('distribuidoslab3:server');
 var http = require('http');
@@ -12,7 +14,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3003');
+var port = normalizePort(args[0] || '8000');
 app.set('port', port);
 
 /**

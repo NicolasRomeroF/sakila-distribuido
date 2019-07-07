@@ -1,6 +1,6 @@
 var http = require('http'),
 httpProxy = require('http-proxy');
-var servers =  ['http://127.0.0.1:3001', 'http://127.0.0.1:3002', 'http://127.0.0.1:3003'];
+var servers =  ['http://127.0.0.1:8001', 'http://127.0.0.1:8002', 'http://127.0.0.1:8003'];
 
 var proxy = httpProxy.createProxyServer();
 http.createServer(function(req,res){

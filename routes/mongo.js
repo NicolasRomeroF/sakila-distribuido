@@ -3,10 +3,6 @@ var router = express.Router();
 var mongo = require('../models/MongoDBModel');
 
 
-router.get('/connect', function(req, res, next){
-    mongo.connectDB();
-    res.send("Connected!");
-})
 
 router.post('/addMovie', function(req,res,next){
     console.log("agregando pelicula");
@@ -17,7 +13,8 @@ router.get('/all', function(req,res,next){
     mongo.getMovies(res);
 })
 
-router.get('/:input', function (req,res,next){
+router.get('/search/:input', function (req,res,next){
+    console.log("buscando ",req.params.input)
     mongo.getMovie(req.params.input,res);
 })
 

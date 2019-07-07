@@ -1,7 +1,14 @@
 var mongoose = require('mongoose')
 var MovieSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    film_id: Number,
     title: String,
-    content: String
+    description: String
+},{
+    collection: 'film'
 });
-var Movie = mongoose.model('Movie', MovieSchema, 'movies');
+
+MovieSchema.index({title: "text", description: "text"}, {unique: false});
+
+var Movie = mongoose.model('Movie', MovieSchema);
 module.exports = Movie;

@@ -20,13 +20,14 @@ const prueba=[
 class Resultados extends React.Component {
   constructor(props) {
     super(props);
+    require('dotenv').config();
     const params = props.match.params;
 
     var test = {id:3, titulo: params.cadena, descripcion: params.cadena};
 
     this.state = {
       busqueda: this.props.match.params.cadena,
-      resultados:  [...prueba,test],
+      resultados:  [],
       boton:false,
     };
 
@@ -58,10 +59,23 @@ class Resultados extends React.Component {
     this.query(nextProps)
   }
 
+  componentDidMount(){
+    this.query(this.props);
+  }
+
   query(props){
+    console.log("process.env",process.env)
     const params = props.match.params;
     var test = {id:3, titulo: params.cadena, descripcion: params.cadena};
-    this.setState({resultados: [...prueba,test]})
+    var url = process.env.REACT_APP_API_URL + "/search/"+params.cadena;
+    console.log(url)
+    axios.get(url)
+    .then( (res) => {
+      console.log(res.data)
+      this.setState({ 
+        resultados: res.data
+      });
+    });
   }
 
   handleSubmit2 = (event) => {
@@ -90,11 +104,20 @@ class Resultados extends React.Component {
   }
 
   buildResultados = () => {
-    return this.state.resultados.map((resultado) => {
+    if(this.state.resultados.length > 0){
+      return this.state.resultados.map((resultado) => {
+        return(
+          <Resultado key={resultado.id} titulo={resultado.title} descripcion={resultado.description}/>
+        )
+      })
+
+    }
+    else{
       return(
-        <Resultado key={resultado.id} titulo={resultado.titulo} descripcion={resultado.descripcion}/>
+        <Resultado key={0} titulo={"No se encontraron resultados"} descripcion={""}/>
       )
-})
+    }
+    
   }
 
   render() {
