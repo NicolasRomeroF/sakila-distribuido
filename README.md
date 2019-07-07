@@ -39,7 +39,7 @@ Este test nos entrega un tiempo de respuesta promedio de 265 ms con un tiempo ma
 
 A continuacion se muestra una captura de la pagina de stats del HAProxy mientras se realizaba el test.
 
-![alt image](https://i.ibb.co/hs0ck7B/imagen.png "HAProxy Stats")
+![alt image](https://i.ibb.co/fMJ9b1k/imagen.png "HAProxy Stats")
 
 
 
