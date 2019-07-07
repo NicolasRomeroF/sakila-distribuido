@@ -21,6 +21,8 @@ cd front-buscador
 npm start
 ```
 
+A continuación se muestra el resultado entregado por la aplicación en la cual se ingresó la búsqueda "academy" y los resultados entregados son todas las películas que tienen relación con academia tanto en su título como en su descripción.
+
 ![alt image](https://i.ibb.co/Q91FfVN/imagen.png "Aplicacion")
 
 
