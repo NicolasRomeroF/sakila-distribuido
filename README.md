@@ -29,6 +29,20 @@ Al momento de que el usuario realiza una accion que gatilla la acción del front
 
 ## Análisis de rendimiento de la arquitectura
 
+Con la ayuda de la herramienta Apache HTTP server benchmarking tool, se hacen test de stress a la aplicacion.Para esto se realizan 25 conexiones durante 5 segundos con el balanceador de carga activado y 3 servidores de backend sirivendo las peticiones. La peticion realizada corresponde a obtener todas las peliculas de la base de datos.
+
+```
+ab -c25 -t5-k http://localhost:80/movie/all
+```
+
+Este test nos entrega un tiempo de respuesta promedio de 265 ms con un tiempo maximo de 605 ms. A modo de comparacion, cuando se realizo la misma consulta sin el balanceador de carga, el tiempo promedio fue de 618 ms y el tiempo maximo de 1233 ms. Se puede ver que la mejora es sustancial.
+
+A continuacion se muestra una captura de la pagina de stats del HAProxy mientras se realizaba el test.
+
+![alt image](https://i.ibb.co/hs0ck7B/imagen.png "HAProxy Stats")
+
+
+
 ## Análisis sobre tolerancia a fallas y disponibilidad por parte del sistema
 
 ## Selección del servidor y enrutamiento de la consulta realizada por el cliente
