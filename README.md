@@ -55,7 +55,10 @@ Al momento de que el usuario realiza una consulta, ésta es enviada a un proxy, 
 
 ## Paralelización de la consulta
 
+
 ## Análisis de la distribución de la base de datos
+Cada uno de los servidores tiene a cargo una base de datos, la cual exactamente la misma para todos ellos. La base de datos esta replicada tantas veces como servidores hayan, por lo tanto cada uno de ellos esta en condiciones de realizar la misma consulta. 
+
 
 ## Referencias
 
