@@ -5,11 +5,25 @@
 - Franco Leal
 
 # Descripción de la solución
-Para este laboratorio, se tuvo la idea de implementar 
+Para este laboratorio, se implementa una aplicacion que permite buscar informacion de peliculas. En el documento se explicara la arquitectura de como fue distribuida la aplicacion.
+
+# Desplegar aplicacion
+
+Se requiere tener Node.js, MongoDB y opcionalmente HAProxy. Luego se ejecutan los siguientes comandos:
+
+Este comando levanta 3 replicas del back-end, y un balanceador de carga que usa round-robin, en caso de no tener HAProxy.
+```
+./start.sh
+```
+Luego se levanta el front-end.
+```
+cd front-buscador
+npm start
+```
 
 ## Análisis y diseño de la arquitectura propuesta
 El sistema fue diseñado para hacer consultas de formas distribuidas y es por esto, que cada uno de los procesos requiere un análisis para encontrar puntos críticos y posibles fallas o mejoras de la aplicación y su infraestructura. 
-Al momento de que el usuario realiza una accion que gatilla la acción del front-end (como en este caso, realiza una consulta), ésta se va al proxy, el cual lo recibe y encola la consulta para ser procesado posteriormente. Una vez que el proxy obtiene una de las consultas a partir de su sistema de colas, la redirige a un servidor determinado que se encargará de llevarlo a la aplicación que esta corriendo sobre éste. Luego de que la consulta es adquirida por la aplicación, se realiza el proceso de obtención de los documentos que contienen la consulta. Esto se logra gracias al uso de indices invertidos y que conecta con la base de datos MongoDB para extraer la información anteriormente pedida. 
+Al momento de que el usuario realiza una accion que gatilla la acción del front-end (como en este caso, realiza una consulta), ésta se va al proxy, el cual funciona como balanceador de carga, el cual lo recibe y redirige la consulta al servidor que tenga menos conexiones actualmente. Luego de que la consulta es adquirida por la aplicación, se realiza el proceso de obtención de los documentos que contienen la consulta. Esto se logra gracias al uso de indices invertidos y que conecta con la base de datos MongoDB para extraer la información anteriormente pedida. 
 
 
 
