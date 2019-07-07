@@ -21,6 +21,9 @@ cd front-buscador
 npm start
 ```
 
+![alt image](https://i.ibb.co/Q91FfVN/imagen.png "Aplicacion")
+
+
 ## Análisis y diseño de la arquitectura propuesta
 El sistema fue diseñado para hacer consultas de formas distribuidas y es por esto, que cada uno de los procesos requiere un análisis para encontrar puntos críticos y posibles fallas o mejoras de la aplicación y su infraestructura. 
 Al momento de que el usuario realiza una accion que gatilla la acción del front-end (como en este caso, realiza una consulta), ésta se va al proxy, el cual funciona como balanceador de carga, el cual lo recibe y redirige la consulta al servidor que tenga menos conexiones actualmente. Luego de que la consulta es adquirida por la aplicación, se realiza el proceso de obtención de los documentos que contienen la consulta. Esto se logra gracias al uso de indices invertidos y que conecta con la base de datos MongoDB para extraer la información anteriormente pedida. 
@@ -50,3 +53,10 @@ A continuacion se muestra una captura de la pagina de stats del HAProxy mientras
 ## Paralelización de la consulta
 
 ## Análisis de la distribución de la base de datos
+
+## Referencias
+
+Para el HAProxy: https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts
+Para el balanceador de carga usando Node.js: https://mazira.com/blog/introduction-load-balancing-nodejs
+Apache HTTP server benchmarking tool : https://httpd.apache.org/docs/2.4/programs/ab.html
+Express.js framwork: https://expressjs.com/es/
