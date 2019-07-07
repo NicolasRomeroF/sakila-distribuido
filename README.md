@@ -47,8 +47,11 @@ A continuacion se muestra una captura de la pagina de stats del HAProxy mientras
 
 
 ## Análisis sobre tolerancia a fallas y disponibilidad por parte del sistema
+La arquitectura del sistema provee disponibilidad durante todo momento, ya que se encuentra distribuida entre varios servidores y cada servidor tiene una réplica de la base de datos (explicada en el analisis de la distribución de la base de datos). Por lo que no hay procesos en donde requieran encolar consultas o donde pueda ocurrir starvation. En caso de caida de un servidor, el sistema puede seguir funcionando con los que quedan sin mayor complicaciones.
+
 
 ## Selección del servidor y enrutamiento de la consulta realizada por el cliente
+Al momento de que el usuario realiza una consulta, ésta es enviada a un proxy, el cual selecciona un servidor para llevar a cabo la consulta de manera distribuida. Para la elección del servidor a mandar la consulta, se tiene una lista con cada uno de ellos, y el proxy elige según un criterio de uso para repartir equitativamente la cantidad de consultas que son enviadas.
 
 ## Paralelización de la consulta
 
