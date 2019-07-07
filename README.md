@@ -30,6 +30,11 @@ A continuación se muestra el resultado entregado por la aplicación en la cual 
 El sistema fue diseñado para hacer consultas de formas distribuidas y es por esto, que cada uno de los procesos requiere un análisis para encontrar puntos críticos y posibles fallas o mejoras de la aplicación y su infraestructura. 
 Al momento de que el usuario realiza una accion que gatilla la acción del front-end (como en este caso, realiza una consulta), ésta se va al proxy, el cual funciona como balanceador de carga, el cual lo recibe y redirige la consulta al servidor que tenga menos conexiones actualmente. Luego de que la consulta es adquirida por la aplicación, se realiza el proceso de obtención de los documentos que contienen la consulta. Esto se logra gracias al uso de indices invertidos que conecta con la base de datos MongoDB para extraer la información anteriormente pedida. Una vez realidada la consulta, es devueta hasta llegar al front-end donde se muestran los resultados obtenidos.
 
+Lo anterior se puede ver gráficamente en la siguiente imagen:
+
+![alt image](https://i.ibb.co/hHD6x7r/app.png "Diseño")
+
+
 
 
 ## Análisis de rendimiento de la arquitectura
